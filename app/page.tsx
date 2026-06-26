@@ -4,8 +4,8 @@ import TopUniversities from "@/components/home/TopUniversities";
 import PopularCourses from "@/components/home/PopularCourses";
 import WhyChooseUs from "@/components/home/WhyChooseUs";
 import CTASection from "@/components/home/CTASection";
-import Header from "@/components/home/Header";
-import Footer from "@/components/home/Footer";
+// import Header from "@/components/home/Header";
+// import Footer from "@/components/home/Footer";
 import Testimonials from "@/components/home/Testimonials";
 import FAQSection from "@/components/home/FAQSection";
 import { client } from "@/sanity/lib/client";
@@ -16,7 +16,7 @@ export default async function Home() {
 
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <HeroSection />
       <TrustBar />
       <TopUniversities universities={universities} />
@@ -25,7 +25,7 @@ export default async function Home() {
       <Testimonials />
       <FAQSection />
       <CTASection />
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }
