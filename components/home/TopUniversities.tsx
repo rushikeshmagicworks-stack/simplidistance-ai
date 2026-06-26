@@ -1,29 +1,22 @@
-const universities = [
-  {
-    name: "Amity University Online",
-    fees: "₹45,000 / Year",
-    rating: "4.8",
-    badge: "UGC Approved",
-  },
-  {
-    name: "Manipal University Jaipur",
-    fees: "₹42,000 / Year",
-    rating: "4.7",
-    badge: "NAAC A+",
-  },
-  {
-    name: "LPU Online",
-    fees: "₹39,000 / Year",
-    rating: "4.8",
-    badge: "Top Ranked",
-  },
-];
+type University = {
+  _id: string;
+  name: string;
+  fees: string;
+  rating: number;
+  featured?: boolean;
+  slug?: string;
+};
 
-export default function TopUniversities() {
+interface TopUniversitiesProps {
+  universities: University[];
+}
+
+export default function TopUniversities({
+  universities,
+}: TopUniversitiesProps) {
   return (
     <section className="bg-white py-24">
       <div className="mx-auto max-w-7xl px-6">
-        
         <div className="text-center">
           <span className="rounded-full bg-yellow-100 px-4 py-2 text-sm font-medium text-yellow-700">
             Top Universities
@@ -41,15 +34,18 @@ export default function TopUniversities() {
         <div className="mt-14 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {universities.map((uni) => (
             <div
-              key={uni.name}
+              key={uni._id}
               className="group overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-2 hover:shadow-xl"
             >
-              {/* Logo Area */}
-              <div className="h-40 bg-gradient-to-br from-slate-100 to-slate-200" />
+              <div className="flex h-40 items-center justify-center bg-gradient-to-br from-yellow-50 to-slate-100">
+                <span className="text-lg font-bold text-slate-500">
+                  University Logo
+                </span>
+              </div>
 
               <div className="p-6">
                 <span className="rounded-full bg-yellow-100 px-3 py-1 text-xs font-medium text-yellow-700">
-                  {uni.badge}
+                  {uni.featured ? "Featured" : "UGC Approved"}
                 </span>
 
                 <h3 className="mt-4 text-xl font-bold text-slate-900">
@@ -85,7 +81,6 @@ export default function TopUniversities() {
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );

@@ -8,14 +8,18 @@ import Header from "@/components/home/Header";
 import Footer from "@/components/home/Footer";
 import Testimonials from "@/components/home/Testimonials";
 import FAQSection from "@/components/home/FAQSection";
+import { client } from "@/sanity/lib/client";
+import { universitiesQuery } from "@/sanity/lib/queries";
 
-export default function Home() {
+export default async function Home() {
+  const universities = await client.fetch(universitiesQuery);
+
   return (
     <>
-    <Header />
+      <Header />
       <HeroSection />
       <TrustBar />
-      <TopUniversities />
+      <TopUniversities universities={universities} />
       <PopularCourses />
       <WhyChooseUs />
       <Testimonials />
